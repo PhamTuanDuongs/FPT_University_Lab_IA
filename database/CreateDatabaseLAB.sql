@@ -1,19 +1,19 @@
 -- DROP DATABASE LAB_ReportGradeSystem;
 -- CREATE DATABASE LAB_ReportGradeSystem;
--- USE LAB_ReportGradeSystem;
+USE LAB_ReportGradeSystem;
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Account (
     username VARCHAR(150) NOT NULL PRIMARY KEY,
     `password` VARCHAR(150) NOT NULL
 );
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE `Role`(
 	roleId int NOT NULL,
 	roleName varchar(150),
 	CONSTRAINT PK_Role PRIMARY KEY (roleId)
 );
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Account_Role(
 	username varchar(150) NOT NULL,
 	roleId int NOT NULL,
@@ -24,14 +24,14 @@ REFERENCES Account (username);
 ALTER TABLE Account_Role ADD CONSTRAINT FK_Account_Role_Role FOREIGN KEY(roleId)
 REFERENCES `Role` (roleId);
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Feature(
 	featureId int NOT NULL, 
 	featureName varchar(150),
 	`url` varchar(150),
 	CONSTRAINT PK_Feature PRIMARY KEY (featureId)
 );
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Role_Feature 
 (
 	roleId int NOT NULL,
@@ -44,7 +44,6 @@ ALTER TABLE Role_Feature ADD CONSTRAINT FK_Role_Feature_Feature FOREIGN KEY(feat
 REFERENCES Feature(featureId);
 
 
- -- SQLINES LICENSE FOR EVALUATION USE ONLY
  CREATE TABLE Instructor
  (
 	instructorId varchar(20) NOT NULL,
@@ -54,7 +53,7 @@ REFERENCES Feature(featureId);
     CONSTRAINT FK_Instructor_Account FOREIGN KEY (accountId) REFERENCES Account(username)
 );
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Curriculum(
 	curriculumId varchar(50),
 	curriculumName varchar(150),
@@ -62,7 +61,7 @@ CREATE TABLE Curriculum(
 );
 INSERT INTO Curriculum VALUES ('SE','Software Engineer');
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Course
 (
 	courseId varchar(10) NOT NULL,
@@ -71,7 +70,6 @@ CREATE TABLE Course
  );
 
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
 CREATE TABLE Curriculum_Course(
 	curriculumId varchar(50),
 	courseId varchar(10), 
@@ -82,7 +80,7 @@ REFERENCES Curriculum (curriculumId);
 ALTER TABLE Curriculum_Course ADD CONSTRAINT FK_CurriculumCourse_Course FOREIGN KEY(courseId)
 REFERENCES Course (courseId);
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Student
 (
 	studentId varchar(8) NOT NULL,
@@ -96,7 +94,6 @@ ALTER TABLE Student ADD CONSTRAINT FK_Student_Curriculum FOREIGN KEY(curriculumI
 REFERENCES Curriculum (curriculumId);
 
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
 CREATE TABLE `Group`
 (
 	groupId int NOT NULL,
@@ -110,7 +107,7 @@ REFERENCES Course (courseId);
 ALTER TABLE `Group` ADD CONSTRAINT FK_Group_Instructor FOREIGN KEY(instructorId)
 REFERENCES Instructor (instructorId);
 
- -- SQLINES LICENSE FOR EVALUATION USE ONLY
+
  CREATE TABLE Participate
  (
 	groupId int NOT NULL,
@@ -122,7 +119,7 @@ REFERENCES `Group` (groupId);
 ALTER TABLE Participate ADD CONSTRAINT FK_Participate_Student FOREIGN KEY(studentId)
 REFERENCES Student (studentId);
 
- -- SQLINES LICENSE FOR EVALUATION USE ONLY
+
  CREATE TABLE GradeCategory
  (
 	gradeCategoryId int NOT NULL,
@@ -135,7 +132,7 @@ REFERENCES Student (studentId);
 ALTER TABLE GradeCategory ADD CONSTRAINT FK_GradeCategory_Course FOREIGN KEY(courseId)
 REFERENCES Course (courseId);
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Semester (
 	semesterId varchar(50),
 	semesterName varchar(50),
@@ -144,7 +141,7 @@ CREATE TABLE Semester (
 	endDate date,
 	CONSTRAINT PK_Semester PRIMARY KEY (semesterId)
 );
--- SQLINES LICENSE FOR EVALUATION USE ONLY
+
 CREATE TABLE Grade 
 (
 	gradeCategoryId int,
@@ -161,55 +158,42 @@ ALTER TABLE Grade  ADD CONSTRAINT FK_Grade_GradeCategory FOREIGN KEY(gradeCatego
 REFERENCES GradeCategory (gradeCategoryId);
 
 /* SQLINES DEMO *** DROP TABLE Semester
+--	Thứ tự drop bảng
+DROP TABLE Grade;
+DROP TABLE Semester;
+DROP TABLE GradeCategory;
+DROP TABLE Participate;
+DROP TABLE `Group`;
+DROP TABLE Curriculum_Course;
+DROP TABLE Course;
+DROP TABLE Student;
+DROP TABLE Curriculum;
+DROP TABLE Instructor;
 
-DROP TABLE GradeCategory
-DROP TABLE Participate 
-DROP TABLE [Group]
-DROP TABLE Curriculum_Course
-DROP TABLE Course
-DROP TABLE Student 
-DROP TABLE Curriculum 
-DROP TABLE Instructor 
+DROP TABLE Account_Role;
+DROP TABLE Account;
+DROP TABLE Role_Feature;
+DROP TABLE `Role`;
+DROP TABLE Feature;
 
-DROP TABLE Account_Role
-DROP TABLE Account
-DROP TABLE Role_Feature 
-DROP TABLE [Role]
-DROP TABLE Feature
+SELECT * FROM Grade;
+SELECT * FROM Semester;
+SELECT * FROM GradeCategory;
+SELECT * FROM Participate;
+SELECT * FROM `Group`;
+SELECT * FROM Curriculum_Course;
+SELECT * FROM Course;
+SELECT * FROM Student;
+SELECT * FROM Curriculum;
+SELECT * FROM Instructor;
 
-SELECT * FROM Grade
-SELECT * FROM GradeCategory
-SELECT * FROM Participate 
-SELECT * FROM Group
-SELECT * FROM CurriculumCourse
-SELECT * FROM Course
-SELECT * FROM Student 
-SELECT * FROM Curriculum 
-SELECT * FROM Instructor 
+SELECT * FROM Account_Role;
+SELECT * FROM Account;
+SELECT * FROM Role_Feature;
+SELECT * FROM `Role`;
+SELECT * FROM Feature;
 
-SELECT * FROM Account_Role
-SELECT * FROM Account
-SELECT * FROM Role_Feature 
-SELECT * FROM [Role]
-SELECT * FROM Feature
-
---	Thứ tự xóa bảng 
-DELETE FROM Grade
-DELETE FROM Semester 
-DELETE FROM GradeCategory
-DELETE FROM Participate 
-DELETE FROM Group;
-DELETE FROM CurriculumCourse
-DELETE FROM Course
-DELETE FROM Student 
-DELETE FROM Curriculum 
-DELETE FROM Instructor 
-
-DELETE FROM Account_Role
-DELETE FROM Account
-DELETE FROM Role_Feature 
-DELETE FROM [Role]
-DELETE FROM Feature
+--	Thứ tự xóa bảng
 */
 
 
