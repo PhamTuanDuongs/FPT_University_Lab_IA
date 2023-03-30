@@ -6,6 +6,8 @@ package FPT_University_Lab_IA_Group2.dao;
 
 import java.util.List;
 import FPT_University_Lab_IA_Group2.model.Account;
+import FPT_University_Lab_IA_Group2.model.Role;
+import java.util.Collection;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,7 +29,8 @@ public class AccountDAO {
     }
 
     public Account findByUsername(final String username) {
-        return sessionFactory.getCurrentSession().find(Account.class, username);
+        Account acc = sessionFactory.getCurrentSession().find(Account.class, username);
+        return acc;
     }
 
     public void delete(final Account account) {
