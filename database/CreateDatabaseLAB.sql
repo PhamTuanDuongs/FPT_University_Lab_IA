@@ -66,6 +66,7 @@ CREATE TABLE Course
 (
 	courseId varchar(10) NOT NULL,
 	courseName nvarchar(100),
+    noOfCredit int default 3,
 	CONSTRAINT PK_Course PRIMARY KEY (courseId)
  );
 
