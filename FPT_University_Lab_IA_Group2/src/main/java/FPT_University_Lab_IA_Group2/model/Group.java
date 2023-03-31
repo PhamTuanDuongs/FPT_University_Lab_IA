@@ -30,7 +30,7 @@ public class Group {
     @JoinColumn(name = "instructorId")
     private Instructor instructor;
 
-    @ManyToMany(targetEntity = Student.class, cascade = {CascadeType.ALL})
+    @ManyToMany(targetEntity = Student.class)
     @JoinTable(name = "Participate",
             joinColumns = {
                 @JoinColumn(name = "groupId")},

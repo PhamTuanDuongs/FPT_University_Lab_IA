@@ -51,7 +51,6 @@ public class AccountService {
     }
 
     public boolean isValid(Account account) {
-
         return accountDAO.isValidAccount(account.getUsername(), account.getPassword());
     }
 

@@ -27,7 +27,7 @@ public class Feature {
     @Column(name = "url")
     private String url;
 
-    @ManyToMany(targetEntity = Role.class, cascade = {CascadeType.ALL})
+    @ManyToMany(targetEntity = Role.class)
     @JoinTable(name = "Role_Feature",
             joinColumns = {
                 @JoinColumn(name = "featureId")},

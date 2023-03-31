@@ -22,10 +22,10 @@ public class Curriculum {
     @Column(name = "curriculumName")
     private String curriculumName;
 
-    @OneToMany(targetEntity = Student.class, mappedBy = "curriculum")
+    @OneToMany(targetEntity = Student.class, fetch = FetchType.LAZY, mappedBy = "curriculum")
     private List<Student> students;
 
-    @ManyToMany(targetEntity = Course.class, cascade = {CascadeType.ALL})
+    @ManyToMany(targetEntity = Course.class, fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinTable(name = "Curriculum_Course",
             joinColumns = {
                 @JoinColumn(name = "curriculumId")},
