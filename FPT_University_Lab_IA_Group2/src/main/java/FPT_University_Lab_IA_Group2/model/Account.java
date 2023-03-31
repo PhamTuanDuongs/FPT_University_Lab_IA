@@ -5,15 +5,7 @@
 package FPT_University_Lab_IA_Group2.model;
 
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -30,8 +22,14 @@ public class Account {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "accounts")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "accounts")
     private List<Role> roles;
+
+    @OneToOne(targetEntity = Student.class, mappedBy = "account")
+    private Student student;
+
+    @OneToOne(targetEntity = Instructor.class, mappedBy = "account")
+    private Instructor instructor;
 
     public List<Role> getRoles() {
         return roles;
@@ -55,6 +53,22 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
 }

@@ -14,13 +14,7 @@
     </head>
     <body>
         <c:forEach items="${listAccount}" var="accs">
-            ${accs.username}
-            <c:forEach items="${accs.roles}" var="r">
-                ${r.roleName}
-                <c:forEach items="${r.features}" var="f">
-                    ${f.featureName} /
-                </c:forEach>
-            </c:forEach>
+            ${accs.student.curriculum}
             <br>
         </c:forEach>
     </body>

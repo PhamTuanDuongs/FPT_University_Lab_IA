@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 
 /**
  *
@@ -26,10 +24,10 @@ public class Instructor {
     @Column(name = "instructorId")
     private String instructorId;
 
-    @Column(name = "instructorId")
+    @Column(name = "instructorName")
     private String instructorName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account")
+    @OneToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "username")// accountId = username
     private Account account;
 }

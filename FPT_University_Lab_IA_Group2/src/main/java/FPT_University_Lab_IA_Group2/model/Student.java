@@ -5,17 +5,7 @@
 package FPT_University_Lab_IA_Group2.model;
 
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -32,20 +22,44 @@ public class Student {
     @Column(name = "studentName")
     private String studentName;
 
-    @OneToOne()
-    @JoinColumn(name = "username", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "username")// accountId = username
     private Account account;
 
-    @OneToOne()
-    @JoinColumn(name = "curriculumId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "curriculumId")
     private Curriculum curriculum;
 
-    @ManyToMany(targetEntity = Group.class, cascade = {CascadeType.ALL})
-    @JoinTable(name = "Account_Role",
-            joinColumns = {
-                @JoinColumn(name = "roleId")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "username")})
-    private List<Account> accounts;
+    public String getStudentId() {
+        return studentId;
+    }
 
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Curriculum getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(Curriculum curriculum) {
+        this.curriculum = curriculum;
+    }
+    
 }

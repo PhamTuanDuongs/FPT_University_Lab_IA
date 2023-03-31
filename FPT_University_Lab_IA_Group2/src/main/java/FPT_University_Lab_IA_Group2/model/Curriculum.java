@@ -4,10 +4,8 @@
  */
 package FPT_University_Lab_IA_Group2.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 
 /**
  *
@@ -24,6 +22,25 @@ public class Curriculum {
     @Column(name = "curriculumName")
     private String curriculumName;
 
+    @OneToMany(targetEntity = Student.class, mappedBy = "curriculum")
+    private List<Student> students;
+
+    @ManyToMany(targetEntity = Course.class, cascade = {CascadeType.ALL})
+    @JoinTable(name = "Curriculum_Course",
+            joinColumns = {
+                @JoinColumn(name = "curriculumId")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "courseId")})
+    private List<Course> courses;
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
     public String getCurriculumId() {
         return curriculumId;
     }
@@ -38,6 +55,14 @@ public class Curriculum {
 
     public void setCurriculumName(String curriculumName) {
         this.curriculumName = curriculumName;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
 }
