@@ -21,6 +21,7 @@ public class GradeId implements Serializable {
 
     @Column(name = "studentId")
     private String studentId;
+    
     @Column(name = "semesterId")
     private String semesterId;
 
