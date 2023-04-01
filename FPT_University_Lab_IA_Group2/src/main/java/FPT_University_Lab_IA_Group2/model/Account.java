@@ -22,13 +22,13 @@ public class Account {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER, mappedBy = "accounts")
+    @ManyToMany(targetEntity = Role.class, mappedBy = "accounts")
     private List<Role> roles;
 
-    @OneToOne(targetEntity = Student.class, fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToOne(targetEntity = Student.class, mappedBy = "account")
     private Student student;
 
-    @OneToOne(targetEntity = Instructor.class, fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToOne(targetEntity = Instructor.class, mappedBy = "account")
     private Instructor instructor;
 
     public List<Role> getRoles() {
@@ -75,7 +75,5 @@ public class Account {
     public String toString() {
         return "Account{" + "username=" + username + ", password=" + password + ", roles=" + roles + ", student=" + student + ", instructor=" + instructor + '}';
     }
-    
-    
 
 }

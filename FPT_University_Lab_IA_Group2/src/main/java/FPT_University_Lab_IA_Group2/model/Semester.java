@@ -18,8 +18,7 @@ public class Semester {
 
     @Id
     @Column(name = "semesterId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int semesterId;
+    private String semesterId;
 
     @Column(name = "semesterName")
     private String semesterName;
@@ -36,11 +35,11 @@ public class Semester {
     @OneToMany(targetEntity = Grade.class, mappedBy = "semester")
     private List<Grade> grades;
 
-    public int getSemesterId() {
+    public String getSemesterId() {
         return semesterId;
     }
 
-    public void setSemesterId(int semesterId) {
+    public void setSemesterId(String semesterId) {
         this.semesterId = semesterId;
     }
 

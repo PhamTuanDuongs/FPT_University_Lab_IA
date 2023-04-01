@@ -4,16 +4,16 @@
  */
 package FPT_University_Lab_IA_Group2.controller;
 
-import FPT_University_Lab_IA_Group2.dao.AccountDAO;
-import FPT_University_Lab_IA_Group2.dao.CourseDAO;
-import FPT_University_Lab_IA_Group2.dao.GradeDAO;
 import FPT_University_Lab_IA_Group2.model.Account;
 import FPT_University_Lab_IA_Group2.model.Course;
 import FPT_University_Lab_IA_Group2.model.Curriculum;
 import FPT_University_Lab_IA_Group2.model.Grade;
+import FPT_University_Lab_IA_Group2.model.Semester;
 import FPT_University_Lab_IA_Group2.model.Student;
-import FPT_University_Lab_IA_Group2.service.AccountService;
 import FPT_University_Lab_IA_Group2.service.CourseService;
+import FPT_University_Lab_IA_Group2.service.GradeService;
+import FPT_University_Lab_IA_Group2.service.SemesterService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +30,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class StudentController {
 
     @Autowired
-    CourseService coureCourseService;
+    private CourseService coureCourseService;
+
+    @Autowired
+    private GradeService gradeService;
+
+    @Autowired
+    private SemesterService semesterService;
 
     @RequestMapping("/student/home")
     public String studentHome(Account account, HttpServletRequest req) {
@@ -67,4 +73,36 @@ public class StudentController {
 
         return mv;
     }
+
+    @RequestMapping("/student/viewGrade")
+    public ModelAndView viewGrade(HttpServletRequest req) {
+        ModelAndView mv = new ModelAndView();
+
+        Account acc = (Account) req.getSession().getAttribute("account");
+        Student st = acc.getStudent();
+
+        List<Semester> semesters = semesterService.findAll();
+        mv.addObject("semesters", semesters);
+        String semesterId = req.getParameter("semesterId");
+        
+        List<Course> courses = coureCourseService.listCourseBySemesterAndStudentId(semesterId, st.getStudentId());
+        mv.addObject("courses", courses);
+        String courseId = req.getParameter("courseId");
+
+    
+
+        List<Grade> grades = new ArrayList<>();
+
+        semesterId = "SP2023";
+        courseId = "PRJ301";
+
+        if (courseId != null && semesterId != null) {
+            grades = gradeService.listGrade(st.getStudentId(), semesterId, courseId);
+        }
+
+        mv.addObject("grades", grades);
+        mv.setViewName("student/student-view-grade");
+        return mv;
+    }
+
 }

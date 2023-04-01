@@ -1,8 +1,9 @@
 <%-- 
-    Document   : student-curriculum
-    Created on : Apr 1, 2023, 12:08:53 PM
+    Document   : student-academic-transcript
+    Created on : Apr 1, 2023, 1:46:33 PM
     Author     : chuoiz
 --%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -174,31 +175,64 @@
                     <span>Logout</span>
                 </a>    
                 <h1 style="text-align: center; margin-right: 0 20px 0 0; margin-left: auto;">FPT University Academic Portal</h1>
-                <h3 style="text-align: right; margin-left: auto;">Welcome ${sessionScope.account.username}</h3>  
+                <h3 style="text-align: right; margin-left: auto;">Welcome ${sessionScope.user.username}</h3>  
             </div>
         </header>
         </br>
-        <h2 style="text-align: center;">Curriculum : ${requestScope.curriculum.curriculumId}  ${requestScope.curriculum.curriculumName} </h2>
+        <h2 style="text-align: center;">STUDENT INFORMATION</h2>
         <table border = "1px">
             <c:set var="s" value="${requestScope.student}"/>
+            <tr>
+                <td>Image</td>
+                <td>
+                    <img width="400px" src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fphotos%2Fimages%2Fnewsfeed%2F002%2F417%2F143%2F6c7"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Full Name
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Roll Number
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td>
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    Phone
+                </td>
+                <td>
 
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>SubjectCode</th>
-                    <th>SubjectName</th>
-                    <th>TermNo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${courses}" var="c" varStatus="index">
-                    <tr>
-                        <td>${index.index+1}</td>
-                        <td>${c.courseId}</td>
-                        <td>${c.courseName}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Major
+                </td>
+                <td>
+                </td>
+            </tr>
+
         </table>
     </body>
 </html>

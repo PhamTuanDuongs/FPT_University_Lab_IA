@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Grade {
 
     @EmbeddedId
-    GradeId id;
+    GradeId gradeId;
 
     @Column
     private float gradeValue;
@@ -35,12 +35,12 @@ public class Grade {
     @JoinColumn(name = "studentId")
     Student student;
 
-    public GradeId getId() {
-        return id;
+    public GradeId getGradeId() {
+        return gradeId;
     }
 
-    public void setId(GradeId id) {
-        this.id = id;
+    public void setGradeId(GradeId gradeId) {
+        this.gradeId = gradeId;
     }
 
     public float getGradeValue() {

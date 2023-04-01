@@ -41,4 +41,25 @@ public class CourseDAO {
         return coures;
     }
 
+    public List<Course> listCourseBySemesterAndStudentId(String semesterId, String studentId) {
+        Session session = sessionFactory.getCurrentSession();
+
+        String hql = "SELECT c\n "
+                + "FROM Course c\n"
+                + "JOIN c.curriculums cc\n"
+                + "JOIN cc.students s\n"
+                + "JOIN c.gradeCategorys gc\n"
+                + "JOIN gc.grades gr\n"
+                + "JOIN gr.semester ses\n"
+                + "WHERE s.studentId = 'HE171578' AND ses.semesterId = 'SP2023'\n"
+                + "group by c.courseId, c.courseName";
+
+        Query q = session.createQuery(hql, Course.class);
+
+//        q.setParameter("cuid", curriculumId);
+
+        List<Course> coures = q.getResultList();
+        return coures;
+    }
+
 }

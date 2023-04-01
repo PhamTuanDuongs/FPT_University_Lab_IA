@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @author chuoiz
  */
 @Entity
-@Table(name = "Group")
+@Table(name = "`Group`")
 public class Group {
 
     @Id
@@ -30,12 +30,7 @@ public class Group {
     @JoinColumn(name = "instructorId")
     private Instructor instructor;
 
-    @ManyToMany(targetEntity = Student.class)
-    @JoinTable(name = "Participate",
-            joinColumns = {
-                @JoinColumn(name = "groupId")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "studentId")})
+    @ManyToMany(mappedBy = "groups")    
     private List<Student> students;
 
     public int getGroupId() {

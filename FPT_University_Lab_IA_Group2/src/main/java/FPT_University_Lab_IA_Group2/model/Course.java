@@ -22,13 +22,13 @@ public class Course {
     @Column(name = "courseName")
     private String courseName;
 
-    @OneToMany(targetEntity = Group.class, fetch = FetchType.LAZY, mappedBy = "course")
+    @OneToMany(targetEntity = Group.class, mappedBy = "course")
     private List<Group> groups;
 
-    @OneToMany(targetEntity = GradeCategory.class, fetch = FetchType.LAZY, mappedBy = "course")
+    @OneToMany(targetEntity = GradeCategory.class, mappedBy = "course")
     private List<GradeCategory> gradeCategorys;
 
-    @ManyToMany(targetEntity = Curriculum.class, fetch = FetchType.LAZY, mappedBy = "courses")
+    @ManyToMany(targetEntity = Curriculum.class, mappedBy = "courses")
     private List<Curriculum> curriculums;
 
     public String getCourseId() {

@@ -4,8 +4,8 @@
  */
 package FPT_University_Lab_IA_Group2.service;
 
-import FPT_University_Lab_IA_Group2.dao.CourseDAO;
-import FPT_University_Lab_IA_Group2.model.Course;
+import FPT_University_Lab_IA_Group2.dao.SemesterDAO;
+import FPT_University_Lab_IA_Group2.model.Semester;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,17 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class CourseService {
+public class SemesterService {
 
     @Autowired
-    private CourseDAO courseDAO;
+    private SemesterDAO semesterDAO;
 
-    public List<Course> listCourseByCurriculum(String curriculumId) {
-        return courseDAO.listCourseByCurriculum(curriculumId);
-    }
-
-    public List<Course> listCourseBySemesterAndStudentId(String semesterId, String studentId) {
-        return courseDAO.listCourseBySemesterAndStudentId(semesterId, studentId);
+    public List<Semester> findAll() {
+        return semesterDAO.findAll();
     }
 
 }

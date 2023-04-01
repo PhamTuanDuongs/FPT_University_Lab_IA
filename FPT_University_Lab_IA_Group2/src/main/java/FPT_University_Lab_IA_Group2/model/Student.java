@@ -22,13 +22,38 @@ public class Student {
     @Column(name = "studentName")
     private String studentName;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "username")// accountId = username
     private Account account;
 
     @ManyToOne
     @JoinColumn(name = "curriculumId")
     private Curriculum curriculum;
+
+    @ManyToMany
+    @JoinTable(name = "Participate",
+            joinColumns = @JoinColumn(name = "studentId"),
+            inverseJoinColumns = @JoinColumn(name = "groupId"))
+    private List<Group> groups;
+
+    @OneToMany(targetEntity = Grade.class, mappedBy = "student")
+    private List<Grade> grades;
+
+    public List<Grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(List<Grade> grades) {
+        this.grades = grades;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
 
     public String getStudentId() {
         return studentId;
@@ -60,11 +85,6 @@ public class Student {
 
     public void setCurriculum(Curriculum curriculum) {
         this.curriculum = curriculum;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" + "studentId=" + studentId + ", studentName=" + studentName + ", curriculum=" + curriculum + '}';
     }
 
 }

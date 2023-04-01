@@ -19,8 +19,8 @@ public class GradeCategory {
     @Column(name = "gradeCategoryId")
     private int gradeCategoryId;
 
-    @Column(name = "gradeCateogryName")
-    private String gradeCateogryName;
+    @Column(name = "gradeCategoryName")
+    private String gradeCategoryName;
 
     @Column(name = "gradeItemName")
     private String gradeItemName;
@@ -43,12 +43,12 @@ public class GradeCategory {
         this.gradeCategoryId = gradeCategoryId;
     }
 
-    public String getGradeCateogryName() {
-        return gradeCateogryName;
+    public String getGradeCategoryName() {
+        return gradeCategoryName;
     }
 
-    public void setGradeCateogryName(String gradeCateogryName) {
-        this.gradeCateogryName = gradeCateogryName;
+    public void setGradeCategoryName(String gradeCategoryName) {
+        this.gradeCategoryName = gradeCategoryName;
     }
 
     public String getGradeItemName() {

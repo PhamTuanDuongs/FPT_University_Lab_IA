@@ -51,7 +51,9 @@ public class AccountDAO {
         q.setParameter("u", username);
         q.setParameter("p", password);
         Account account = (Account) q.uniqueResult();
- 
+
+        System.out.println(account.getRoles());
+
         return account;
     }
 
