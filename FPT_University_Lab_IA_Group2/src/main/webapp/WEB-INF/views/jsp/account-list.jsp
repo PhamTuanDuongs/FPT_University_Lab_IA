@@ -15,7 +15,7 @@
     <body> 
         <%= new Date()%>
         <c:forEach items="${listAccount}" var="accs">
-            ${accs.student.curriculum.curriculumName}
+            ${accs.student.curriculum}
             <br>
         </c:forEach>
     </body>
