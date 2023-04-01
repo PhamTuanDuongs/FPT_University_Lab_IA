@@ -7,7 +7,6 @@ package FPT_University_Lab_IA_Group2.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 
 /**
  *

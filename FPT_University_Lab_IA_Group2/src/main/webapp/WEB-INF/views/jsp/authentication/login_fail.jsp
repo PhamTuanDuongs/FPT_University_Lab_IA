@@ -47,13 +47,13 @@
     </style>
     <body>
         <h1> ACCESS DENIED !!!</h1>
-        <<img width ="350px"src="https://scontent.fhan5-11.fna.fbcdn.net/v/t31.18172-8/16252515_1850707418513354_8791603222259856943_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=saFg6ohZ6moAX89On4H&_nc_ht=scontent.fhan5-11.fna&oh=00_AfCaMCcCQdCBeYNLRHaqIUuqPJzwmqWUEAYpOTXrerDQDw&oe=642AD3BD" alt="chicken"/>
+        <img width ="350px"src="https://scontent.fhan5-11.fna.fbcdn.net/v/t31.18172-8/16252515_1850707418513354_8791603222259856943_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=saFg6ohZ6moAX89On4H&_nc_ht=scontent.fhan5-11.fna&oh=00_AfCaMCcCQdCBeYNLRHaqIUuqPJzwmqWUEAYpOTXrerDQDw&oe=642AD3BD" alt="chicken"/>
         <h2>May` con` non lam' ! Khong truy cap. duoc. dau :))) ahihihi</h2>
         <h2>May` con` non lam' ! Khong truy cap. duoc. dau :))) ahihihi</h2>
         <h2>May` con` non lam' ! Khong truy cap. duoc. dau :))) ahihihi</h2>
         <h2>May` con` non lam' ! Khong truy cap. duoc. dau :))) ahihihi</h2>
             <p>You will be redirected to the login page in 5 seconds</p>
-            <meta http-equiv="refresh" content="5;url=//FPT_University_Lab_IA_Group2/login"/>
+            <meta http-equiv="refresh" content="5;url=/FPT_University_Lab_IA_Group2/login"/>
         <p>If you are not redirected, please <a href="/FPT_University_Lab_IA_Group2/login">click here</</a>.</p>
     </body>
 </html>
