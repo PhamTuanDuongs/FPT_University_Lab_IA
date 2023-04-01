@@ -12,7 +12,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+    <body> 
+        <%= new Date()%>
         <c:forEach items="${listAccount}" var="accs">
             ${accs.student.curriculum}
             <br>

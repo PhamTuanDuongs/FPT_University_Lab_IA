@@ -23,7 +23,7 @@ public class Role {
     @Column(name = "roleName")
     private String roleName;
 
-    @ManyToMany(targetEntity = Account.class, cascade = {CascadeType.ALL})
+    @ManyToMany(targetEntity = Account.class)
     @JoinTable(name = "Account_Role",
             joinColumns = {
                 @JoinColumn(name = "roleId")},
@@ -31,7 +31,7 @@ public class Role {
                 @JoinColumn(name = "username")})
     private List<Account> accounts;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+    @ManyToMany(targetEntity = Feature.class, mappedBy = "roles")
     private List<Feature> features;
 
     public List<Account> getAccounts() {

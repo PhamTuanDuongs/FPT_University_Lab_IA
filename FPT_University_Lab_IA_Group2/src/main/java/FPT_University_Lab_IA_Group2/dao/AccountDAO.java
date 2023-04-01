@@ -6,9 +6,9 @@ package FPT_University_Lab_IA_Group2.dao;
 
 import java.util.List;
 import FPT_University_Lab_IA_Group2.model.Account;
-import FPT_University_Lab_IA_Group2.model.Role;
-import java.util.Collection;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,12 +41,18 @@ public class AccountDAO {
         return sessionFactory.getCurrentSession().createQuery("FROM Account", Account.class).getResultList();
     }
 
-    public boolean isValidAccount(String username, String password) {
+    public Account accountAuthentication(String username, String password) {
 
-        String sql = "Select * from Account\n"
-                + "where username = ? and `password` = ?;";
-        System.out.println(sessionFactory.getCurrentSession().createQuery(sql).getSingleResult());
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from Account a\n"
+                + "where a.username = :u and a.password = :p";
+        Query q = session.createQuery(hql);
 
-        return false;
+        q.setParameter("u", username);
+        q.setParameter("p", password);
+        Account account = (Account) q.uniqueResult();
+ 
+        return account;
     }
+
 }

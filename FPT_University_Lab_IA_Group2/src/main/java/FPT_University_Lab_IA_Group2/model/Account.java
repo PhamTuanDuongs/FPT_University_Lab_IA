@@ -22,7 +22,7 @@ public class Account {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(targetEntity = Role.class, fetch = FetchType.LAZY, mappedBy = "accounts")
+    @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER, mappedBy = "accounts")
     private List<Role> roles;
 
     @OneToOne(targetEntity = Student.class, fetch = FetchType.LAZY, mappedBy = "account")

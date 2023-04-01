@@ -50,8 +50,8 @@ public class AccountService {
         }
     }
 
-    public boolean isValid(Account account) {
-        return accountDAO.isValidAccount(account.getUsername(), account.getPassword());
+    public Account accountAuthentication(String username, String password) {
+        Account accDB = accountDAO.accountAuthentication(username, password);
+        return accDB;
     }
-
 }
