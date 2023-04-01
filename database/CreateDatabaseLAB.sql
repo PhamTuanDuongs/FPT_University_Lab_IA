@@ -32,7 +32,7 @@ CREATE TABLE Feature(
 	CONSTRAINT PK_Feature PRIMARY KEY (featureId)
 );
 
-CREATE TABLE Role_Feature 
+CREATE TABLE Role_Feature 	
 (
 	roleId int NOT NULL,
 	featureId int NOT NULL,

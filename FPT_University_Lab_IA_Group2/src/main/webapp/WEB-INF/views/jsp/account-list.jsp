@@ -14,7 +14,7 @@
     </head>
     <body>
         <c:forEach items="${listAccount}" var="accs">
-            ${accs.student.curriculum}
+            ${accs.student.curriculum.curriculumName}
             <br>
         </c:forEach>
     </body>
