@@ -110,6 +110,8 @@
             <ul>
                 <li><a href="info">Student information</a></li>
                 <li><a href="curriculum">Student curriculum</a></li>
+                <li><a href="grade">Student grade</a></li>
+
             </ul>
         </nav>
     </main>

@@ -178,63 +178,32 @@
             </div>
         </header>
         </br>
-        <h2 style="text-align: center;">Curriculum : ${requestScope.curriculum}</h2>
+        <h2 style="text-align: center;">Curriculum : ${requestScope.curriculum.curriculumId}  ${requestScope.curriculum.curriculumName} </h2>
         <table border = "1px">
             <c:set var="s" value="${requestScope.student}"/>
-            <tr>
-                <td>Image</td>
-                <td>
-                    <img width="400px" src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fphotos%2Fimages%2Fnewsfeed%2F002%2F417%2F143%2F6c7"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Full Name
-                </td>
-                <td>
-                    ${student.studentName}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Roll Number
-                </td>
-                <td>
-                    ${student.studentId}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email
-                </td>
-                <td>
-                    ${student.account.username}
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                    Phone
-                </td>
-                <td>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Address
-                </td>
-                <td>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>SubjectCode</th>
+                    <th>SubjectName</th>
+                    <th>TermNo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${courses}" var="c" varStatus="index">
+                    <tr>
+                        <td>${index.index+1}</td>
+                        <td>${c.courseId}</td>
+                        <td>${c.courseName}</td>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Major
-                </td>
-                <td>
-                    ${student.curriculum.curriculumName}
-                </td>
-            </tr>
+                    </tr>
+                </c:forEach>
+            </tbody>
+
+
+
+
 
         </table>
     </body>
