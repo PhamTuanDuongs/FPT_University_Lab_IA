@@ -61,5 +61,10 @@ public class Student {
     public void setCurriculum(Curriculum curriculum) {
         this.curriculum = curriculum;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Student{" + "studentId=" + studentId + ", studentName=" + studentName + ", curriculum=" + curriculum + '}';
+    }
+
 }

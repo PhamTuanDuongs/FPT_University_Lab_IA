@@ -11,12 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import FPT_University_Lab_IA_Group2.service.AccountService;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -54,47 +49,5 @@ public class AccountController {
         return "account-list";
     }
 
-    // -- authentication ---
-    @GetMapping("/login")
-    public String login() {
-        return "authentication/login";
-    }
-
-    @PostMapping("/login")
-    public String submitLogin(HttpServletRequest req, Model model) {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        Account account = accountService.accountAuthentication(username, password);
-        req.getSession().setAttribute("account", account);
-        if (account != null) {
-            String role = account.getRoles().get(0).getRoleName().toLowerCase(); // student - teacher
-            return "redirect: " + role + "/home";
-        } else {
-            model.addAttribute("error", "Invalid username or password");
-            return "authentication/login";
-        }
-    }
-
-    @RequestMapping("/login_fail")
-    public String loginFail() {
-        return "authentication/login_fail";
-    }
-
-    @RequestMapping("/logout")
-    public String logout(HttpServletRequest req) {
-        // do something to logout
-        req.getSession().removeAttribute("account");
-        return "authentication/login";
-    }
-
-    //---- home -----
-    @RequestMapping("/student/home")
-    public String studentHome() {
-        return "student/student-home";
-    }
-
-    @RequestMapping("/teacher/home")
-    public String intructorHome() {
-        return "teacher/teacher-home";
-    }
+    
 }

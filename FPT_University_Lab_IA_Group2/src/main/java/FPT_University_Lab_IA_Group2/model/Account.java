@@ -71,4 +71,11 @@ public class Account {
         this.instructor = instructor;
     }
 
+    @Override
+    public String toString() {
+        return "Account{" + "username=" + username + ", password=" + password + ", roles=" + roles + ", student=" + student + ", instructor=" + instructor + '}';
+    }
+    
+    
+
 }

@@ -108,7 +108,7 @@
     <main>
         <nav>
             <ul>
-                <li><a href="#">Student information</a></li>
+                <li><a href="info">Student information</a></li>
             </ul>
         </nav>
     </main>
