@@ -84,23 +84,32 @@ public class StudentController {
         List<Semester> semesters = semesterService.findAll();
         mv.addObject("semesters", semesters);
         String semesterId = req.getParameter("semesterId");
-        
+        semesterId = "SP2023";
         List<Course> courses = coureCourseService.listCourseBySemesterAndStudentId(semesterId, st.getStudentId());
         mv.addObject("courses", courses);
         String courseId = req.getParameter("courseId");
 
-    
-
         List<Grade> grades = new ArrayList<>();
-
-        semesterId = "SP2023";
-        courseId = "PRJ301";
 
         if (courseId != null && semesterId != null) {
             grades = gradeService.listGrade(st.getStudentId(), semesterId, courseId);
         }
+        float sum = 0;
+        float percentage = 0;
+        for (Grade grade : grades) {
+            if (!grade.getGradeCategory().getGradeCategoryName().equalsIgnoreCase("Final Exam")) {
+                sum += grade.getGradeValue() * grade.getGradeCategory().getWeight() / 100;
+                percentage += grade.getGradeCategory().getWeight();
+            }
+        }
+        if (percentage == 100) {
+            mv.addObject("sum",  Math.round(sum * 10.0) / 10.0 );
 
+        }
         mv.addObject("grades", grades);
+        mv.addObject("semesterId", semesterId);
+        mv.addObject("courseId", courseId);
+
         mv.setViewName("student/student-view-grade");
         return mv;
     }
