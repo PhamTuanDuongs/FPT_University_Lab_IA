@@ -108,7 +108,7 @@
     <main>
         <nav>
             <ul>
-                <li><a href="curriculum">curriculum</a></li>
+                <li><a href="curriculum">View curriculum</a></li>
                 <li><a href="viewGrade">View grade</a></li>
                 <li><a href="info">Student information</a></li>
             </ul>
