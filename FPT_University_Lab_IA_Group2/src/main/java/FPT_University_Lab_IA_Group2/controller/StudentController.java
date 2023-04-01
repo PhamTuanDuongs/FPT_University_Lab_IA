@@ -4,11 +4,20 @@
  */
 package FPT_University_Lab_IA_Group2.controller;
 
+import FPT_University_Lab_IA_Group2.dao.AccountDAO;
+import FPT_University_Lab_IA_Group2.dao.CourseDAO;
+import FPT_University_Lab_IA_Group2.dao.GradeDAO;
 import FPT_University_Lab_IA_Group2.model.Account;
+import FPT_University_Lab_IA_Group2.model.Course;
+import FPT_University_Lab_IA_Group2.model.Curriculum;
+import FPT_University_Lab_IA_Group2.model.Grade;
 import FPT_University_Lab_IA_Group2.model.Student;
 import FPT_University_Lab_IA_Group2.service.AccountService;
+import FPT_University_Lab_IA_Group2.service.CourseService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class StudentController {
+
+    @Autowired
+    CourseService coureCourseService;
 
     @RequestMapping("/student/home")
     public String studentHome(Account account, HttpServletRequest req) {
@@ -36,6 +48,23 @@ public class StudentController {
 
         mv.addObject("student", student);
         mv.setViewName("student/student-info");
+        return mv;
+    }
+
+    @RequestMapping("/student/curriculum")
+    public ModelAndView studentCurriculum(HttpServletRequest req, HttpServletResponse resp) {
+        ModelAndView mv = new ModelAndView();
+
+        Account acc = (Account) req.getSession().getAttribute("account");
+        Student student = acc.getStudent();
+        Curriculum cu = student.getCurriculum();
+
+        List<Course> courses = coureCourseService.listCourseByCurriculum(cu.getCurriculumId());
+
+        mv.addObject("curriculum", cu);
+        mv.addObject("courses", courses);
+        mv.setViewName("student/student-curriculum");
+
         return mv;
     }
 }

@@ -109,6 +109,7 @@
         <nav>
             <ul>
                 <li><a href="info">Student information</a></li>
+                <li><a href="curriculum">Student curriculum</a></li>
             </ul>
         </nav>
     </main>

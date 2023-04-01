@@ -1,7 +1,7 @@
 <%-- 
-    Document   : info
-    Created on : Mar 16, 2023, 6:45:55 PM
-    Author     : willi
+    Document   : student-curriculum
+    Created on : Apr 1, 2023, 12:08:53 PM
+    Author     : chuoiz
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -174,11 +174,11 @@
                     <span>Logout</span>
                 </a>    
                 <h1 style="text-align: center; margin-right: 0 20px 0 0; margin-left: auto;">FPT University Academic Portal</h1>
-                <h3 style="text-align: right; margin-left: auto;">Welcome ${sessionScope.user.username}</h3>  
+                <h3 style="text-align: right; margin-left: auto;">Welcome ${sessionScope.account.username}</h3>  
             </div>
         </header>
         </br>
-        <h2 style="text-align: center;">STUDENT INFORMATION</h2>
+        <h2 style="text-align: center;">Curriculum : ${requestScope.curriculum}</h2>
         <table border = "1px">
             <c:set var="s" value="${requestScope.student}"/>
             <tr>
