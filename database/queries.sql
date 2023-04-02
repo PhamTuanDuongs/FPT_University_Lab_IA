@@ -1,3 +1,4 @@
+use LAB_ReportGradeSystem;
 select * from `Student`;
 
 /*---------------------------------GET COURSE REPORT FOR A STUDENT-----------------------------------*/
@@ -31,3 +32,29 @@ end //
 
 -- call getAcademicReport('HE170863')
 -- drop procedure if exists getAcademicReport
+
+
+/*---------------------------------------GET GROUP REPORT FOR LECTURER-----------------------------------------------*/
+-- input: groupId
+-- output: grades for students in group
+select * from 
+	`Group` g join Participate p on g.groupId = p.groupId and g.groupId = 15
+    join Student s on s.studentId = p.studentId
+    join Course c on g.courseId = c.courseId
+    join GradeCategory gc on c.courseId = gc.courseId and gc.gradeItemName != 'Total'
+    join Grade gr on gc.gradeCategoryId = gr.gradeCategoryId
+    ;
+    
+    select * from GradeCategory;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

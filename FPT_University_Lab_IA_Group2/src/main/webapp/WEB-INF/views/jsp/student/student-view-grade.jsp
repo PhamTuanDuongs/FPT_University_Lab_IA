@@ -14,6 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <!--<p>${grades.size()}</p>-->
 
         <c:forEach items="${semesters}" var="ses">
             ${ses.semesterName}
