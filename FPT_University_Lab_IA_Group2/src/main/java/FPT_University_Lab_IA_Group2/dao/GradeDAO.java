@@ -50,4 +50,18 @@ public class GradeDAO {
         return grades;
 
     }
+
+    public List<Grade> listGradeByStudent(String studentId) {
+        Session session = sessionFactory.getCurrentSession();
+
+        String hql = "SELECT \n"
+                + "FROM Grade g"
+                + "WHERE g.studentId = :sid ";
+
+        Query q = session.createQuery(hql);
+        q.setParameter("sid", studentId);
+
+        List<Grade> grades = q.getResultList();
+        return grades;
+    }
 }

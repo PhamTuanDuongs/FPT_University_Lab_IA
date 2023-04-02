@@ -5,6 +5,7 @@
 package FPT_University_Lab_IA_Group2.dao;
 
 import FPT_University_Lab_IA_Group2.model.Course;
+import FPT_University_Lab_IA_Group2.model.GradeCategory;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -57,7 +58,6 @@ public class CourseDAO {
         Query q = session.createQuery(hql, Course.class);
 
 //        q.setParameter("cuid", curriculumId);
-
         List<Course> coures = q.getResultList();
         return coures;
     }
